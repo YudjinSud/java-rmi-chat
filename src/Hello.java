@@ -1,13 +1,10 @@
-
-package tp2;
-
 import java.rmi.*;
 
-public  class HelloImpl implements Hello {
+public  class Hello implements IHello {
 
 	private String message;
  
-	public HelloImpl(String s) {
+	public Hello(String s) {
 		message = s ;
 	}
 
