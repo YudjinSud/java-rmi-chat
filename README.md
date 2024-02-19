@@ -4,9 +4,9 @@
 rmiregistry 6090 &
 
 //launch the server
-java -Djava.rmi.server.hostname=localhost  -cp classes src.HelloServer 6090
+java -Djava.rmi.server.hostname=localhost  -cp classes src.ChatServer 6090
 
 //launch the client
-java -cp classes/ src.HelloClient localhost 6090
+java -cp classes/ src.ChatClient localhost 6090
 
 ![diagram](diagram.png)
