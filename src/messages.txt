@@ -1,7 +1,3 @@
-two,f,hello !
-two,f,hello !
-one,f,hi!
-one,f,hi!
-three,f,coucou !
-three,f,coucou !
-three,f,coucou !
+one,f,hello
+one,f,hi there
+two,f,how do yoy do ?

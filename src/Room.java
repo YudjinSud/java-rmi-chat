@@ -3,7 +3,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public class Room implements IRoom, Remote, Serializable {
+public class Room implements IRoom, Serializable {
     private final String roomId;
 
     public Room(String roomId) {
