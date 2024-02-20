@@ -3,7 +3,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
 
-public class Room implements IRoom, Serializable {
+public class Room implements IRoom {
     private final String roomId;
 
     public Room(String roomId) {
@@ -17,7 +17,7 @@ public class Room implements IRoom, Serializable {
     private final ArrayList<IUserSession> userList = new ArrayList<IUserSession>();
     private final ArrayList<IMessage> messageList = new ArrayList<IMessage>();
 
-    public void addMessage(Message message) {
+    public synchronized void addMessage(Message message) {
         messageList.add(message);
     }
 
@@ -27,7 +27,7 @@ public class Room implements IRoom, Serializable {
     }
 
     @Override
-    public void addUserSession(IUserSession userSession) throws RemoteException {
+    public synchronized void addUserSession(IUserSession userSession) throws RemoteException {
         userList.add(userSession);
 
         if (this.messageList.size() > 0) {
@@ -44,7 +44,7 @@ public class Room implements IRoom, Serializable {
         this.broadcastMessage("User " + userSession.getUserId() + " has joined the room", false);
     }
 
-    public void leave(IUserSession userSession) throws RemoteException {
+    public synchronized void leave(IUserSession userSession) throws RemoteException {
         userList.remove(userSession);
         this.broadcastMessage("User " + userSession.getUserId() + " has left the room", false);
     }
@@ -57,7 +57,7 @@ public class Room implements IRoom, Serializable {
         to.receiveMessage(msg, shouldWrite);
     }
 
-    public void sendMessageFrom(IUserSession from, String message) throws RemoteException {
+    public synchronized void sendMessageFrom(IUserSession from, String message) throws RemoteException {
         Message msg = new Message(from.getUserId(), this.roomId, message);
 
         messageList.add(msg);

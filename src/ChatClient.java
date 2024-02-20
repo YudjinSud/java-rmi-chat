@@ -8,7 +8,7 @@ public class ChatClient {
     public static void main(String[] args) {
         try {
             if (args.length < 2) {
-                System.out.println("Usage: java tp2.HelloClient <rmiregistry host> <rmiregistry port>");
+                System.out.println("Usage: java class name <rmiregistry host> <rmiregistry port>");
                 return;
             }
 
